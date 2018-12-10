@@ -1,7 +1,6 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
-  background-size: cover;
+  background: url(/JavaScript30/01\ -\ JavaScript\ Drum\ Kit/bg.png);
 }
 
 body,html {
@@ -24,7 +23,7 @@ body,html {
   margin: 1rem;
   font-size: 1.5rem;
   padding: 1rem .5rem;
-  transition: all .07s ease;
+  transition: all .1s ease;
   width: 10rem;
   text-align: center;
   color: white;
