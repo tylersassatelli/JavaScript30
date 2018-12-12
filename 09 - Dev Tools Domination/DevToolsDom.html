@@ -18,28 +18,77 @@
     }
 
     // Regular
+    console.log('Hello');
 
     // Interpolated
+    console.log('Hello I am a %s string!', '+poop');
+    // or
+    // console.log(`Hello I am a ${var} string!`);
 
     // Styled
+    console.log('%c I am some great text', 'font-size:20px; background:red; text-shadow: 10px 10px 0 blue');
 
     // warning!
+    console.warn('OH NOOO');
 
     // Error :|
+    console.error('ERROR MY DUDE');
 
     // Info
+    console.info('Crocodiles eat 3-4 people per year');
 
     // Testing
+    const p = document.querySelector('p');
+    console.assert(1 === 1, 'That is wrong'); // nothing happens as it asserts'true'
+    console.assert(p.classList.contains('ouch'), 'This is wrong'); // this will fire into console since that p doesn't have that class
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    // console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`); // from this to groupEnd is grouped and can be collapsed
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    dogs.forEach(dog => {  // same as above but collapsed by default
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('Tyler');
+    console.count('Tyler');
+    console.count('Wes');
+    console.count('Tyler');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Tyler');
+    console.count('Wes');
+    console.count('Tyler'); 
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/tylersassatelli')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    // table
+    console.table(dogs); // take an array of objects, assuming they have the same properties, it'll display nicely in a table for you
 
   </script>
 </body>
