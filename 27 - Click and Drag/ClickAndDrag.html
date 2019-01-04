@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Click and Drag</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="items">
     <div class="item item1">01</div>
@@ -34,8 +36,43 @@
     <div class="item item25">25</div>
   </div>
 
-<script>
-</script>
+  <script>
 
-  </body>
+    const slider = document.querySelector('.items');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft; // finding where mouse was clicked, but accounting for where the slider is on the page by subtracting any pixels we need to (in order to account for things like padding etc)
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      e.preventDefault();
+      if (!isDown) return; // stop fn from running if mouse isn't down
+      const x = e.pageX - slider.offsetLeft;
+      // console.log({x, startX}); // in an object so we can see the name of each value when looking at the console
+      const walk = (x - startX) * 2; // multiplied to make the scroll faster
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+
+  </script>
+
+</body>
+
 </html>
